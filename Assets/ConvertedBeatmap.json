@@ -1,0 +1,1350 @@
+{
+    "songName": "Imported From MDBMSC",
+    "bpm": 156.0,
+    "notes": [
+        {
+            "time": 0.2884615361690521,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 0.48076924681663515,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 1.1538461446762086,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 1.3461538553237916,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 1.826923131942749,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 2.019230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 2.403846263885498,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 2.596153974533081,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 2.788461685180664,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.28846144676208498
+        },
+        {
+            "time": 3.173076868057251,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.28846168518066409
+        },
+        {
+            "time": 4.615384578704834,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 4.615384578704834,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 5.192307949066162,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 5.192307949066162,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 5.769230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 5.961538791656494,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 6.25,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 6.442307949066162,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 6.826923370361328,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 7.019230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 7.307692527770996,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 7.5,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 7.884615421295166,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.28846120834350588
+        },
+        {
+            "time": 8.269230842590332,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.28846168518066409
+        },
+        {
+            "time": 8.653846740722657,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 8.653846740722657,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 9.134615898132325,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 9.134615898132325,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 9.423076629638672,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 9.423076629638672,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 10.0,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 10.192307472229004,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 10.384615898132325,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 10.576923370361329,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 10.769230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 10.961538314819336,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 11.153846740722657,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 11.34615421295166,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 11.442307472229004,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 11.634615898132325,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 11.730769157409668,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 12.019230842590332,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 12.211538314819336,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 12.307692527770996,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 12.692307472229004,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.28846168518066409
+        },
+        {
+            "time": 12.692307472229004,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.28846168518066409
+        },
+        {
+            "time": 13.269230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 13.269230842590332,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 13.461538314819336,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 13.461538314819336,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 13.75,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 13.75,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 14.230769157409668,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 14.519230842590332,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 14.711538314819336,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 15.0,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 15.19230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 15.480769157409668,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 15.673077583312989,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 15.961538314819336,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 16.25,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 16.346153259277345,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 16.44230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 16.538461685180665,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 16.634614944458009,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 16.730770111083986,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 16.826923370361329,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 16.923076629638673,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 17.01923179626465,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 17.01923179626465,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 17.115385055541993,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 17.115385055541993,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 17.211538314819337,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 17.211538314819337,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 19.134614944458009,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 19.615385055541993,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 20.0,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 20.480770111083986,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.8653850555419922
+        },
+        {
+            "time": 22.01923179626465,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 23.076923370361329,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 23.461538314819337,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 23.94230842590332,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.8653850555419922
+        },
+        {
+            "time": 25.288461685180665,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.4807701110839844
+        },
+        {
+            "time": 25.288461685180665,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.4807701110839844
+        },
+        {
+            "time": 26.153846740722658,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 26.153846740722658,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 26.44230842590332,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 26.44230842590332,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 26.730770111083986,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 26.730770111083986,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 27.307693481445314,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.5769214630126953
+        },
+        {
+            "time": 27.69230842590332,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 27.884614944458009,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 28.461538314819337,
+            "direction": 3,
+            "lane": 1,
+            "duration": 1.538461685180664
+        },
+        {
+            "time": 29.230770111083986,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 29.711538314819337,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 30.0,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 30.288461685180665,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.28846168518066409
+        },
+        {
+            "time": 30.288461685180665,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.28846168518066409
+        },
+        {
+            "time": 30.865385055541993,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 30.961538314819337,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 31.057693481445314,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 31.346155166625978,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.6730747222900391
+        },
+        {
+            "time": 31.730770111083986,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 31.923076629638673,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 32.019229888916019,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 32.403846740722659,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.5769233703613281
+        },
+        {
+            "time": 32.69230651855469,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 32.88461685180664,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 32.980770111083987,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 33.17307662963867,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.6730766296386719
+        },
+        {
+            "time": 33.17307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.6730766296386719
+        },
+        {
+            "time": 34.13461685180664,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 34.13461685180664,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 34.42307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.5769233703613281
+        },
+        {
+            "time": 34.71154022216797,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 34.80769348144531,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 35.0,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 35.096153259277347,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.3846168518066406
+        },
+        {
+            "time": 35.480770111083987,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 35.67307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 35.769229888916019,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 35.865386962890628,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 35.96154022216797,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 36.153846740722659,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 36.25,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 36.44230651855469,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 36.730770111083987,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.1923065185546875
+        },
+        {
+            "time": 37.30769348144531,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.384613037109375
+        },
+        {
+            "time": 37.7884635925293,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 37.980770111083987,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 38.07692337036133,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 38.07692337036133,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 38.17307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 38.269229888916019,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.19231033325195313
+        },
+        {
+            "time": 38.55769348144531,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 38.55769348144531,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 38.75,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.3846168518066406
+        },
+        {
+            "time": 38.75,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.3846168518066406
+        },
+        {
+            "time": 39.230770111083987,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 39.230770111083987,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 39.32692337036133,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 39.32692337036133,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 39.42307662963867,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 39.42307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 39.615386962890628,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.28845977783203127
+        },
+        {
+            "time": 40.0,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 40.096153259277347,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 40.19230651855469,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 40.67307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 40.67307662963867,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.5769233703613281
+        },
+        {
+            "time": 41.44231033325195,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 41.5384635925293,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 41.63461685180664,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 41.730770111083987,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 41.82692337036133,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 41.92307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 42.115386962890628,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 42.115386962890628,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 42.403846740722659,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 42.403846740722659,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 42.980770111083987,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 43.269229888916019,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 44.0384635925293,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 44.32692337036133,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 44.80769348144531,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.5769233703613281
+        },
+        {
+            "time": 45.0,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 45.096153259277347,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 45.19231033325195,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 45.2884635925293,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 45.38461685180664,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 45.480770111083987,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 45.57692337036133,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 45.67307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 45.769229888916019,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 45.865386962890628,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 45.96154022216797,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 46.25,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.3846168518066406
+        },
+        {
+            "time": 46.44231033325195,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 46.92307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 46.92307662963867,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 47.88461685180664,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 48.17307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.3846168518066406
+        },
+        {
+            "time": 48.17307662963867,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.3846168518066406
+        },
+        {
+            "time": 48.94231033325195,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.6730766296386719
+        },
+        {
+            "time": 49.71154022216797,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 50.19231033325195,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 50.2884635925293,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 50.38461685180664,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 51.05769348144531,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 51.05769348144531,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 51.5384635925293,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.6730766296386719
+        },
+        {
+            "time": 51.92307662963867,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 52.21154022216797,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 52.403846740722659,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 52.403846740722659,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 52.69231033325195,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.5769195556640625
+        },
+        {
+            "time": 52.69231033325195,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 53.46154022216797,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 53.55769348144531,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 53.653846740722659,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 53.846153259277347,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 53.846153259277347,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 54.0384635925293,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.1923065185546875
+        },
+        {
+            "time": 54.0384635925293,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.1923065185546875
+        },
+        {
+            "time": 54.32692337036133,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 54.42307662963867,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 54.615386962890628,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 54.615386962890628,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 54.80769348144531,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.4807701110839844
+        },
+        {
+            "time": 54.80769348144531,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.4807701110839844
+        },
+        {
+            "time": 55.38461685180664,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 55.38461685180664,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 55.67307662963867,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.4807701110839844
+        },
+        {
+            "time": 56.346153259277347,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.5769233703613281
+        },
+        {
+            "time": 57.21154022216797,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 57.30769348144531,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 57.403846740722659,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 57.5,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 57.5,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 57.7884635925293,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        },
+        {
+            "time": 57.7884635925293,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 58.07692337036133,
+            "direction": 3,
+            "lane": 1,
+            "duration": 0.0
+        },
+        {
+            "time": 58.07692337036133,
+            "direction": 3,
+            "lane": 0,
+            "duration": 0.0
+        }
+    ]
+}
