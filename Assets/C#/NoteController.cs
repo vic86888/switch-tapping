@@ -2,62 +2,80 @@ using UnityEngine;
 
 public class NoteController : MonoBehaviour
 {
-    [Header("長按音符專用 (單擊音符請留空)")]
+    [Header("長按音符專用")]
     public Transform bodyTransform; 
 
     private Vector3 startPos;
     private Vector3 endPos;
     private float spawnTime;
     private float leadTime;
-    private float duration;
+    
+    // 開放給 HitManager 讀取的公開變數
+    public float duration;
+    public int direction;
+    public int lane;
+    public float targetTime;  // 預計精準到達判定點的時間
+    public bool isBeingHeld = false; // 是否正被玩家死死按著？
 
-    public void Initialize(Vector3 start, Vector3 end, float spawnTime, float leadTime, float duration, int direction)
+    // 🌟 注意這裡多加了 int lane 參數
+    public void Initialize(Vector3 start, Vector3 end, float spawnTime, float leadTime, float duration, int direction, int lane)
     {
         this.startPos = start;
         this.endPos = end;
         this.spawnTime = spawnTime;
         this.leadTime = leadTime;
         this.duration = duration;
+        
+        // 🌟 補上變數儲存與計算目標時間
+        this.direction = direction;
+        this.lane = lane;
+        this.targetTime = spawnTime + leadTime; // 算出玩家應該擊中的精準時間
 
-        // 轉向邏輯維持不變
-        if (direction == 0) transform.rotation = Quaternion.Euler(0, 0, 0);   
-        if (direction == 1) transform.rotation = Quaternion.Euler(0, 0, 180); 
-        if (direction == 2) transform.rotation = Quaternion.Euler(0, 0, 90);  
-        if (direction == 3) transform.rotation = Quaternion.Euler(0, 0, -90); 
+        // 🌟 終極解法：刪除原本寫死的 direction 判斷，改用數學讓方塊「自動看向終點」
+        Vector2 moveDirection = (end - start).normalized;
+        if (moveDirection != Vector2.zero) 
+        {
+            float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle - 90f);
+        }
 
-        // 🌟 核心修正：在初始化的當下「立刻」計算一次正確的位置與大小
-        // 這樣在 Unity 渲染出畫面的前一刻，它的外觀就已經是正確的縮小狀態，不會露出 Prefab 的大尺寸
+        // 🌟 最關鍵的一步：向 HitManager 報到，加入排隊清單！
+        if (HitManager.instance != null)
+        {
+            HitManager.instance.RegisterNote(this, this.direction, this.lane);
+        }
+
+        // 立刻更新一次視覺，防止第一幀閃爍
         UpdateNoteVisual();
     }
 
     void Update()
     {
         if (leadTime == 0) return;
-
-        // 每一幀持續更新視覺
         UpdateNoteVisual();
     }
 
-    // 🌟 將視覺更新的邏輯獨立出來
     void UpdateNoteVisual()
     {
         float currentTime = SongManager.instance.songPosition;
 
-        // ============================================
-        // 模式 A：單擊音符 (duration == 0) 的邏輯
-        // ============================================
-        if (duration == 0)
+        if (duration <= 0) // 單擊音符
         {
             float progress = (currentTime - spawnTime) / leadTime;
-            transform.position = Vector3.Lerp(startPos, endPos, progress);
+            // 🌟 將原本的 Vector3.Lerp 改成 Vector3.LerpUnclamped
+            // 這樣音符到了判定點後，就不會煞車，會繼續順暢地往前飛出畫面！
+            transform.position = Vector3.LerpUnclamped(startPos, endPos, progress);
 
-            if (progress > 1.2f) Destroy(gameObject);
+            // 飛過頭超過 1.2 倍距離 (代表玩家完全沒打到 Miss了)
+            if (progress > 1.2f) 
+            {
+                Debug.Log("❌ 漏打 Miss!");
+                HitAndDestroy();
+            }
             return; 
         }
 
-        // ============================================
-        // 模式 B：長按音符 (duration > 0) 的動態伸展邏輯
-        // ============================================
+        // 長按音符
         float headProgress = (currentTime - spawnTime) / leadTime;
         float tailProgress = (currentTime - (spawnTime + duration)) / leadTime;
 
@@ -66,7 +84,11 @@ public class NoteController : MonoBehaviour
 
         if (visualTailProgress >= 1.0f)
         {
-            Destroy(gameObject);
+            // 如果玩家死死按到最後一刻，我們在這裡自動觸發完美結束
+            if (isBeingHeld) Debug.Log("🌟 長按順利按完!");
+            else Debug.Log("❌ 漏打長按 Miss!");
+            
+            HitAndDestroy();
             return;
         }
 
@@ -81,5 +103,15 @@ public class NoteController : MonoBehaviour
             bodyTransform.localScale = new Vector3(bodyTransform.localScale.x, currentLength, 1);
             bodyTransform.localPosition = new Vector3(0, -currentLength / 2f, 0);
         }
+    }
+
+    // 被 HitManager 打中或飛過頭銷毀時，呼叫此方法
+    public void HitAndDestroy()
+    {
+        if (HitManager.instance != null)
+        {
+            HitManager.instance.RemoveNote(this, direction, lane);
+        }
+        Destroy(gameObject);
     }
 }

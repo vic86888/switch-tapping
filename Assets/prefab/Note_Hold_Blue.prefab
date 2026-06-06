@@ -47,6 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 6486829096281781867}
+  duration: 0
+  direction: 0
+  lane: 0
+  targetTime: 0
+  isBeingHeld: 0
 --- !u!1 &3779340909597190784
 GameObject:
   m_ObjectHideFlags: 0

@@ -78,20 +78,10 @@ public class NoteSpawner : MonoBehaviour
             // 預設目標點等於原本軌道的目標點
             Vector3 finalTargetPos = targetPoint.position;
 
-            // 如果是單擊音符 (duration 為 0)
-            if (data.duration <= 0) 
-            {
-                // 計算方塊的移動方向向量 (目標點 減掉 出生點) 並單位化 (長度變為1)
-                Vector3 moveDirection = (targetPoint.position - spawnPos).normalized;
-                
-                // 把最終目標點，沿著移動方向往回退 0.25 格
-                finalTargetPos -= moveDirection * 0.25f;
-            }
-
             // 4. 交接資料給 NoteController 
             // ⚠️ 這裡要注意：把原本的 targetPoint.position 改傳入我們算好的 finalTargetPos
             NoteController controller = newNote.GetComponent<NoteController>();
-            controller.Initialize(spawnPos, finalTargetPos, spawnTime, leadTime, data.duration, data.direction);
+            controller.Initialize(spawnPos, finalTargetPos, spawnTime, leadTime, data.duration, data.direction, data.lane);
             
             // --- 👆 新增/修改的部分到這裡結束 👆 ---
         }

@@ -101,3 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 0}
+  duration: 0
+  direction: 0
+  lane: 0
+  targetTime: 0
+  isBeingHeld: 0
