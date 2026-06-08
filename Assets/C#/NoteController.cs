@@ -62,14 +62,12 @@ public class NoteController : MonoBehaviour
         if (duration <= 0) // 單擊音符
         {
             float progress = (currentTime - spawnTime) / leadTime;
-            // 🌟 將原本的 Vector3.Lerp 改成 Vector3.LerpUnclamped
-            // 這樣音符到了判定點後，就不會煞車，會繼續順暢地往前飛出畫面！
             transform.position = Vector3.LerpUnclamped(startPos, endPos, progress);
 
-            // 飛過頭超過 1.2 倍距離 (代表玩家完全沒打到 Miss了)
             if (progress > 1.2f) 
             {
-                Debug.Log("❌ 漏打 Miss!");
+                // 🌟 改成呼叫 HitManager 斷 Combo，並顯示 Miss
+                HitManager.instance.TriggerMiss(direction, lane);
                 HitAndDestroy();
             }
             return; 
@@ -84,9 +82,11 @@ public class NoteController : MonoBehaviour
 
         if (visualTailProgress >= 1.0f)
         {
-            // 如果玩家死死按到最後一刻，我們在這裡自動觸發完美結束
-            if (isBeingHeld) Debug.Log("🌟 長按順利按完!");
-            else Debug.Log("❌ 漏打長按 Miss!");
+            if (!isBeingHeld) 
+            {
+                // 🌟 長按中途漏掉，斷 Combo
+                HitManager.instance.TriggerMiss(direction, lane);
+            }
             
             HitAndDestroy();
             return;
