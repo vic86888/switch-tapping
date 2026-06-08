@@ -47,16 +47,16 @@ public class HitManager : MonoBehaviour
         // 🌟 新增：更新軌道發光視覺
         UpdateTrackVisuals(currentDir);
 
-        // 2. 處理右手 J 鍵 (紅圈軌道, Lane 0)
-        if (Input.GetKeyDown(KeyCode.J)) 
+        // 2. 處理右手紅圈軌道 (Lane 0) => 支援鍵盤 J 或 Arduino 的 "J"
+        if (Input.GetKeyDown(KeyCode.J) || ArduinoSerialPOC.GetButtonDown("J")) 
             TryHitNote(currentDir, 0, ref activeHoldJ);
-        else if (Input.GetKeyUp(KeyCode.J) && activeHoldJ != null) 
+        else if ((Input.GetKeyUp(KeyCode.J) || ArduinoSerialPOC.GetButtonUp("J")) && activeHoldJ != null) 
             TryReleaseNote(ref activeHoldJ);
 
-        // 3. 處理右手 K 鍵 (藍圈軌道, Lane 1)
-        if (Input.GetKeyDown(KeyCode.K)) 
+        // 3. 處理右手藍圈軌道 (Lane 1) => 支援鍵盤 K 或 Arduino 的 "K"
+        if (Input.GetKeyDown(KeyCode.K) || ArduinoSerialPOC.GetButtonDown("K")) 
             TryHitNote(currentDir, 1, ref activeHoldK);
-        else if (Input.GetKeyUp(KeyCode.K) && activeHoldK != null) 
+        else if ((Input.GetKeyUp(KeyCode.K) || ArduinoSerialPOC.GetButtonUp("K")) && activeHoldK != null) 
             TryReleaseNote(ref activeHoldK);
     }
 
@@ -75,13 +75,20 @@ public class HitManager : MonoBehaviour
 
     int GetCurrentJoystickDirection()
     {
+        // 1. 先讀取 Arduino 實體搖桿方向
+        string serialDir = ArduinoSerialPOC.JoystickDirection;
+        if (serialDir == "UP") return 0;
+        if (serialDir == "DOWN") return 1;
+        if (serialDir == "LEFT") return 2;
+        if (serialDir == "RIGHT") return 3;
+
+        // 2. 如果沒接 Arduino，保留鍵盤 WASD 作為備用測試
         if (Input.GetKey(KeyCode.W)) return 0; // 上
         if (Input.GetKey(KeyCode.S)) return 1; // 下
         if (Input.GetKey(KeyCode.A)) return 2; // 左
         if (Input.GetKey(KeyCode.D)) return 3; // 右
         return -1; 
     }
-
     void TryHitNote(int dir, int lane, ref NoteController holdRef)
     {
         if (dir == -1) return; 
