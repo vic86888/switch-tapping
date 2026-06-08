@@ -18,17 +18,6 @@ public class PauseManager : MonoBehaviour
         {
             pauseMenuPanel.SetActive(false);
         }
-
-        // 嘗試自動抓取場景中的背景音樂
-        if (SongManager.instance != null)
-        {
-            musicSource = SongManager.instance.GetComponent<AudioSource>();
-        }
-        else
-        {
-            // 如果沒掛在 SongManager 上，就在場景中隨便找一個 AudioSource
-            musicSource = FindObjectOfType<AudioSource>();
-        }
     }
 
     void Update()
