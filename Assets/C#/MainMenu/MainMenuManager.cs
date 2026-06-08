@@ -13,13 +13,13 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-        // 1. 強制將遊戲的初始總音量設為 0.5 (50%)
-        AudioListener.volume = 0.5f;
+        // 1. 強制將遊戲的初始總音量設為 0.1 (10%)
+        AudioListener.volume = 0.1f;
 
-        // 2. 讓畫面上的音量滑桿也同步顯示在 0.5 的位置
+        // 2. 讓畫面上的音量滑桿也同步顯示在 0.1 的位置
         if (volumeSlider != null)
         {
-            volumeSlider.value = 0.5f;
+            volumeSlider.value = 0.1f;
         }
     }
 

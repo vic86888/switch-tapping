@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // 🌟 必須加入這行才能控制 UI
+using UnityEngine.SceneManagement;
 
 public class HitManager : MonoBehaviour
 {
@@ -43,6 +44,16 @@ public class HitManager : MonoBehaviour
 
     private int currentCombo = 0; // 🌟 紀錄目前的 Combo 數
 
+    [Header("遊戲結束設定")]
+    public float songEndTime = 120f; // 🌟 音樂結束時間 (秒)，你可以自由調整
+    public string resultSceneName = "ResultScene"; // 🌟 結算場景名稱
+    private bool isGameEnded = false;
+
+    // 🌟 靜態變數：跨場景儲存成績
+    public static int totalPerfect = 0;
+    public static int totalGreat = 0;
+    public static int totalMiss = 0;
+
     void Awake()
     {
         instance = this;
@@ -51,12 +62,17 @@ public class HitManager : MonoBehaviour
 
     void Start()
     {
-        // 遊戲開始時清空所有文字
         ResetCombo();
         for (int i = 0; i < 8; i++) 
         {
             if (judgementTexts[i] != null) judgementTexts[i].text = "";
         }
+
+        // 🌟 遊戲開始時，重置所有成績
+        totalPerfect = 0;
+        totalGreat = 0;
+        totalMiss = 0;
+        isGameEnded = false;
     }
 
     public void RegisterNote(NoteController note, int direction, int lane)
@@ -76,6 +92,14 @@ public class HitManager : MonoBehaviour
 
         // 🌟 新增這行：只要進入暫停狀態，直接退出，無視底下所有的搖桿與按鍵判斷！
         if (PauseManager.isPaused) return;
+
+        // 🌟 判斷是否抵達結束時間
+        if (!isGameEnded && SongManager.instance.songPosition >= songEndTime)
+        {
+            isGameEnded = true;
+            SceneManager.LoadScene(resultSceneName); // 跳轉到結算場景
+            return; // 停止執行後續邏輯
+        }
 
         int currentDir = GetCurrentJoystickDirection();
         UpdateTrackVisuals(currentDir);
@@ -217,6 +241,7 @@ public class HitManager : MonoBehaviour
     {
         int trackIndex = direction * 2 + lane;
         ShowJudgement(trackIndex, "Miss", missColor);
+        totalMiss++; // 🌟 紀錄
         ResetCombo();
     }
 
@@ -287,11 +312,13 @@ public class HitManager : MonoBehaviour
                 if (timeDiff <= perfectWindow) 
                 {
                     ShowJudgement(trackIndex, "Perfect", perfectColor);
+                    totalPerfect++; // 🌟 紀錄
                     AddCombo();
                 }
                 else if (timeDiff <= greatWindow) 
                 {
                     ShowJudgement(trackIndex, "Great", greatColor);
+                    totalGreat++; // 🌟 紀錄
                     AddCombo();
                 }
                 else 
@@ -330,12 +357,14 @@ public class HitManager : MonoBehaviour
             if (note.headPerfect && !note.wasReleasedEarly && note.isBeingHeld)
             {
                 ShowJudgement(trackIndex, "Perfect", perfectColor);
+                totalPerfect++; // 🌟 紀錄
                 AddCombo();
             }
             else
             {
                 // 寬容模式：有摸到頭但中途放開(變灰了)，或起手沒抓準，最後保底 Great
                 ShowJudgement(trackIndex, "Great", greatColor);
+                totalGreat++; // 🌟 紀錄
                 AddCombo();
             }
         }
