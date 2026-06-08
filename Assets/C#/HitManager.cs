@@ -179,57 +179,99 @@ public class HitManager : MonoBehaviour
         int trackIndex = dir * 2 + lane;
         if (tracks[trackIndex].Count == 0) return; 
 
-        NoteController oldestNote = tracks[trackIndex][0];
-        
+        // 🌟 防呆尋找：找出這條軌道上「第一個還可以被打」的音符
+        NoteController targetNote = null;
         float currentTime = SongManager.instance.songPosition;
-        float timeDiff = Mathf.Abs(currentTime - oldestNote.targetTime); 
+
+        foreach (var note in tracks[trackIndex])
+        {
+            // 如果是長按音符且頭部已經打過了，不能重複打
+            if (note.duration > 0 && note.headHit) continue; 
+            
+            // 如果這顆音符已經徹底飛過去錯過了，略過它找下一顆
+            if (currentTime - note.targetTime > missWindow) continue; 
+
+            targetNote = note;
+            break;
+        }
+
+        if (targetNote == null) return; 
+
+        float timeDiff = Mathf.Abs(currentTime - targetNote.targetTime); 
 
         if (timeDiff <= missWindow) 
         {
-            if (timeDiff <= perfectWindow) 
+            if (targetNote.duration > 0)
             {
-                ShowJudgement(trackIndex, "Perfect", perfectColor);
-                AddCombo();
-            }
-            else if (timeDiff <= greatWindow) 
-            {
-                ShowJudgement(trackIndex, "Great", greatColor);
-                AddCombo();
-            }
-            else 
-            {
-                TriggerMiss(dir, lane); // 太早按也是 Miss
-            }
-
-            if (oldestNote.duration > 0)
-            {
-                holdRef = oldestNote;
-                oldestNote.isBeingHeld = true; 
+                // 🌟 長按音符邏輯：只在背景紀錄，【不】顯示 UI 也【不】加 Combo
+                targetNote.headHit = true;
+                targetNote.headPerfect = (timeDiff <= perfectWindow);
+                
+                holdRef = targetNote;
+                targetNote.isBeingHeld = true; 
             }
             else
             {
-                oldestNote.HitAndDestroy(); 
+                // 🌟 單擊音符邏輯：照舊直接結算
+                if (timeDiff <= perfectWindow) 
+                {
+                    ShowJudgement(trackIndex, "Perfect", perfectColor);
+                    AddCombo();
+                }
+                else if (timeDiff <= greatWindow) 
+                {
+                    ShowJudgement(trackIndex, "Great", greatColor);
+                    AddCombo();
+                }
+                else 
+                {
+                    TriggerMiss(dir, lane);
+                }
+                targetNote.HitAndDestroy(); 
             }
         }
     }
 
     void TryReleaseNote(ref NoteController holdRef)
     {
-        float currentTime = SongManager.instance.songPosition;
-        float endTime = holdRef.targetTime + holdRef.duration; 
-        float timeDiff = Mathf.Abs(currentTime - endTime);
-        
-        if (timeDiff <= greatWindow) 
+        // 🌟 玩家中途鬆開按鍵 (不馬上結算，只標記狀態)
+        if (holdRef != null)
         {
-            // 完美的長按放開不加 Combo (看你的遊戲設計，這裡不特別加)
-            ShowJudgement(holdRef.direction * 2 + holdRef.lane, "Perfect", perfectColor);
-        } 
-        else 
-        {
-            TriggerMiss(holdRef.direction, holdRef.lane);
+            holdRef.isBeingHeld = false;
+            holdRef.wasReleasedEarly = true; // 記下這筆「提早鬆手」的帳
+            holdRef = null; // 清空佔用，讓玩家的手可以去按別的音符
         }
-        
-        holdRef.HitAndDestroy();
-        holdRef = null; 
+    }
+
+    // 🌟 新增：專屬於長按音符的終極結算中心 (在尾巴走完時被 NoteController 呼叫)
+    public void ResolveHoldNote(NoteController note)
+    {
+        int trackIndex = note.direction * 2 + note.lane;
+
+        // 情況 1：頭部根本沒摸到
+        if (!note.headHit)
+        {
+            TriggerMiss(note.direction, note.lane);
+        }
+        // 情況 2：頭部有摸到
+        else
+        {
+            // 完美條件：起手 Perfect + 中間沒偷放開 + 到最後一刻都乖乖按著
+            if (note.headPerfect && !note.wasReleasedEarly && note.isBeingHeld)
+            {
+                ShowJudgement(trackIndex, "Perfect", perfectColor);
+                AddCombo();
+            }
+            else
+            {
+                // 寬容模式 (選項A)：只要有摸到頭，不管是起手沒抓準、還是中途放開，保底都有 Great！
+                ShowJudgement(trackIndex, "Great", greatColor);
+                AddCombo();
+            }
+        }
+
+        // 清理 HitManager 裡的追蹤器 (如果玩家乖乖按到最後一刻，reference 會殘留在這裡，需手動清除)
+        if (activeHoldJ == note) activeHoldJ = null;
+        if (activeHoldK == note) activeHoldK = null;
     }
 }
