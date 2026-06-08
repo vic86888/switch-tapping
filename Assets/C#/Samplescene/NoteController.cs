@@ -56,6 +56,9 @@ public class NoteController : MonoBehaviour
 
     void Update()
     {
+        // 🌟 新增這行：暫停時，禁止音符更新自己的視覺位置！
+        if (PauseManager.isPaused) return;
+        
         if (leadTime == 0) return;
         UpdateNoteVisual();
     }

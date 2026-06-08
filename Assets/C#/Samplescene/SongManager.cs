@@ -9,12 +9,13 @@ public class SongManager : MonoBehaviour
     public AudioClip songClip;
 
     [Header("遊戲延遲設定")]
-    public float startDelay = 30.0f; // 🌟 遊戲開始前的準備時間 (等待三秒)
+    public float startDelay = 3.0f; // 遊戲開始前的準備時間
 
     [Header("即時資訊 (供外部讀取)")]
     public float songPosition; 
 
-    private float dspSongTime; // 記錄音樂真正開始播放的系統精準時間
+    private double dspSongTime;       // 記錄音樂真正開始播放的精準時間 (改為 double)
+    private double pauseStartDSPTime; // 🌟 記錄按下暫停瞬間的系統時間
 
     void Awake()
     {
@@ -30,19 +31,53 @@ public class SongManager : MonoBehaviour
         {
             audioSource.clip = songClip;
             
-            // 1. 取得現在 Unity 音效引擎的絕對時間，並加上 3 秒的延遲
-            dspSongTime = (float)AudioSettings.dspTime + startDelay;
-
-            // 2. 告訴音效引擎：「請準時在 dspSongTime 這個時間點，自動把音樂播出來」
+            // 取得精準時間並加上延遲
+            dspSongTime = AudioSettings.dspTime + startDelay;
             audioSource.PlayScheduled(dspSongTime);
         }
     }
 
     void Update()
     {
-        // 3. 計算目前的遊戲時間
-        // 🌟 魔法在這裡：前三秒的時候，(現在時間 - 未來播放時間) 會是「負數」！
-        // 時間會這樣跑：-3.0 -> -2.0 -> -1.0 -> 0 (音樂響起) -> 1.0 ...
+        // 🌟 進入暫停狀態時，停止更新遊戲時間！
+        if (PauseManager.isPaused) return;
+
         songPosition = (float)(AudioSettings.dspTime - dspSongTime);
+    }
+
+    // ==========================================
+    // 🌟 專門給暫停系統呼叫的方法
+    // ==========================================
+    public void PauseMusic()
+    {
+        pauseStartDSPTime = AudioSettings.dspTime; // 記下按下暫停的那一刻
+
+        if (songPosition < 0)
+        {
+            audioSource.Stop(); // 如果還在倒數 3 秒內，直接取消預定播放
+        }
+        else
+        {
+            audioSource.Pause(); // 如果已經開始了，就凍結音樂
+        }
+    }
+
+    public void ResumeMusic()
+    {
+        // 核心魔法：計算出我們到底暫停了多久？
+        double pauseDuration = AudioSettings.dspTime - pauseStartDSPTime;
+
+        // 把音樂的「起始基準點」往未來推遲，把被吃掉的時間補回來
+        dspSongTime += pauseDuration;
+
+        if (songPosition < 0)
+        {
+            // 如果原本還在倒數，就用新的時間重新預定播放
+            audioSource.PlayScheduled(dspSongTime); 
+        }
+        else
+        {
+            audioSource.UnPause(); // 恢復播放
+        }
     }
 }

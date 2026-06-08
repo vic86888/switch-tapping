@@ -74,6 +74,9 @@ public class HitManager : MonoBehaviour
     {
         if (SongManager.instance == null) return;
 
+        // 🌟 新增這行：只要進入暫停狀態，直接退出，無視底下所有的搖桿與按鍵判斷！
+        if (PauseManager.isPaused) return;
+
         int currentDir = GetCurrentJoystickDirection();
         UpdateTrackVisuals(currentDir);
         UpdateHitPointVisuals(currentDir); // 🌟 新增這行：隨時更新 8 個色塊的透明度
