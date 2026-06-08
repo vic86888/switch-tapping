@@ -269,7 +269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330, y: -120}
+  m_AnchoredPosition: {x: 330, y: 120}
   m_SizeDelta: {x: 192.4297, y: 52.0059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &343552420
@@ -738,7 +738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330, y: -120}
+  m_AnchoredPosition: {x: -330, y: 120}
   m_SizeDelta: {x: 192.4297, y: 52.0059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &580846284
@@ -2214,7 +2214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 330, y: 120}
+  m_AnchoredPosition: {x: 330, y: -120}
   m_SizeDelta: {x: 192.4297, y: 52.0059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1625145509
@@ -2528,7 +2528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072d5323e1cabb141a158e548957cbf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatmapJson: {fileID: 4900000, guid: 1e5e222f2de23ed4dbdd66f49955a799, type: 3}
+  beatmapJson: {fileID: 4900000, guid: bafae1cc2b1e51145bc40597a75a3928, type: 3}
   leadTime: 2
   upRed: {fileID: 1823878700}
   upBlue: {fileID: 1952263831}
@@ -2665,7 +2665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330, y: 120}
+  m_AnchoredPosition: {x: -330, y: -120}
   m_SizeDelta: {x: 192.4297, y: 52.0059}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1731055644
@@ -3540,11 +3540,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 0}
+  headRenderer: {fileID: 0}
+  bodyRenderer: {fileID: 0}
+  bodyOffset: 0
   duration: 0
   direction: 0
   lane: 0
   targetTime: 0
   isBeingHeld: 0
+  headHit: 0
+  headPerfect: 0
+  wasReleasedEarly: 0
+  isGray: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -47,11 +47,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTransform: {fileID: 6486829096281781867}
+  headRenderer: {fileID: 7461107657794497529}
+  bodyRenderer: {fileID: 4951276682282166974}
+  bodyOffset: -0.25
   duration: 0
   direction: 0
   lane: 0
   targetTime: 0
   isBeingHeld: 0
+  headHit: 0
+  headPerfect: 0
+  wasReleasedEarly: 0
+  isGray: 0
 --- !u!1 &3779340909597190784
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 6172854199246589413}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5, z: 0.06158047}
+  m_LocalPosition: {x: 0, y: -2.75, z: 0.06158047}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

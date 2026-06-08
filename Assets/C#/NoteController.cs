@@ -4,23 +4,28 @@ public class NoteController : MonoBehaviour
 {
     [Header("長按音符專用")]
     public Transform bodyTransform; 
+    public SpriteRenderer headRenderer; // 🌟 記得在 Prefab 綁定頭部
+    public SpriteRenderer bodyRenderer; // 🌟 記得在 Prefab 綁定身體
+
+    // 🌟 新增這個變數，讓你可以自由微調 Body 的前後位置
+    public float bodyOffset = 0f;
 
     private Vector3 startPos;
     private Vector3 endPos;
     private float spawnTime;
     private float leadTime;
     
-    // 開放給 HitManager 讀取的公開變數
     public float duration;
     public int direction;
     public int lane;
     public float targetTime;  
     public bool isBeingHeld = false; 
 
-    // 🌟 新增：專門用來記錄長按音符狀態的變數
-    public bool headHit = false;         // 頭部有沒有按到？
-    public bool headPerfect = false;     // 頭部是不是 Perfect？
-    public bool wasReleasedEarly = false;// 中途是不是有提早放手？
+    // 長按音符狀態追蹤
+    public bool headHit = false;         
+    public bool headPerfect = false;     
+    public bool wasReleasedEarly = false;
+    public bool isGray = false; // 🌟 紀錄是否已經變成灰色幽靈狀態
 
     public void Initialize(Vector3 start, Vector3 end, float spawnTime, float leadTime, float duration, int direction, int lane)
     {
@@ -73,7 +78,7 @@ public class NoteController : MonoBehaviour
         }
 
         // ============================================
-        // 🌟 長按音符視覺與「尾端結算」邏輯
+        // 🌟 長按音符視覺邏輯
         // ============================================
         float headProgress = (currentTime - spawnTime) / leadTime;
         float tailProgress = (currentTime - (spawnTime + duration)) / leadTime;
@@ -81,7 +86,13 @@ public class NoteController : MonoBehaviour
         float visualHeadProgress = Mathf.Clamp01(headProgress);
         float visualTailProgress = Mathf.Max(0, tailProgress);
 
-        // 當尾巴完全抵達終點 (1.0f) 時，呼叫 HitManager 進行一氣呵成的結算！
+        // 🌟 情況 2：如果起手徹底漏打 (超過 Miss 判定時間且沒按到頭) -> 直接變灰
+        if (!headHit && !isGray && (currentTime - targetTime > HitManager.instance.missWindow))
+        {
+            TurnGray();
+        }
+
+        // 當尾巴完全抵達終點 (1.0f) 時，結算！
         if (visualTailProgress >= 1.0f)
         {
             if (HitManager.instance != null)
@@ -101,8 +112,20 @@ public class NoteController : MonoBehaviour
         {
             float currentLength = Vector3.Distance(currentHeadPos, currentTailPos);
             bodyTransform.localScale = new Vector3(bodyTransform.localScale.x, currentLength, 1);
-            bodyTransform.localPosition = new Vector3(0, -currentLength / 2f, 0);
+            // 🌟 在 Y 軸的計算最後，加上 bodyOffset
+            bodyTransform.localPosition = new Vector3(0, -currentLength / 2f + bodyOffset, 0);
         }
+    }
+
+    // 🌟 新增：讓音符變成灰暗的幽靈狀態
+    public void TurnGray()
+    {
+        if (isGray) return;
+        isGray = true;
+        
+        Color grayColor = new Color(0.4f, 0.4f, 0.4f, 0.6f); // 變成暗灰色且半透明
+        if (headRenderer != null) headRenderer.color = grayColor;
+        if (bodyRenderer != null) bodyRenderer.color = grayColor;
     }
 
     public void HitAndDestroy()
