@@ -16,8 +16,22 @@ public class HitManager : MonoBehaviour
     public Color normalColor = new Color(1f, 1f, 1f, 0.1f); 
     public Color highlightColor = new Color(1f, 1f, 1f, 0.6f); 
 
+    [Header("打擊點視覺設定 (色塊)")]
+    public SpriteRenderer[] hitPointRenderers = new SpriteRenderer[8]; // 🌟 綁定 8 個打擊點色塊
+    public float defaultAlpha = 100f / 255f; // 沒按下的預設透明度 (大約 0.39)
+    public float activeAlpha = 1f;           // 按下時的全不透明 (1.0)
+
     [Header("UI 視覺設定")]
     public Text comboText; // 🌟 中間的 Combo 文字
+
+    [Header("Combo 視覺設定")]
+    public Color comboNormalColor = Color.white;                   // 50 連擊以下的顏色
+    public int comboNormalSize = 80;                               // 50 連擊以下的大小    
+    public Color combo50Color = new Color(0f, 0.8f, 1f, 1f);       // 50 連擊以上的顏色 (預設亮藍)
+    public int combo50Size = 100;                                  // 50 連擊以上的大小    
+    public Color combo100Color = new Color(1f, 0.8f, 0f, 1f);      // 100 連擊以上的顏色 (預設金色)
+    public int combo100Size = 120;                                 // 100 連擊以上的大小
+    
     public Text[] judgementTexts = new Text[8]; // 🌟 8 個軌道的判定文字 (0~7)
     public Color perfectColor = Color.yellow;
     public Color greatColor = Color.green;
@@ -62,6 +76,7 @@ public class HitManager : MonoBehaviour
 
         int currentDir = GetCurrentJoystickDirection();
         UpdateTrackVisuals(currentDir);
+        UpdateHitPointVisuals(currentDir); // 🌟 新增這行：隨時更新 8 個色塊的透明度
         FadeOutJudgementTexts(); 
 
         // ============================================
@@ -94,6 +109,40 @@ public class HitManager : MonoBehaviour
             TryReleaseNote(ref activeHoldK);
     }
 
+    // 🌟 新增的方法：處理打擊點色塊的透明度變化
+    void UpdateHitPointVisuals(int currentDir)
+    {
+        // 讀取目前玩家是否「正在按住」按鍵 (包含鍵盤與實體按鈕)
+        bool isJPressed = Input.GetKey(KeyCode.J) || ArduinoSerialPOC.GetButton("J");
+        bool isKPressed = Input.GetKey(KeyCode.K) || ArduinoSerialPOC.GetButton("K");
+
+        for (int i = 0; i < 8; i++)
+        {
+            if (hitPointRenderers[i] == null) continue;
+
+            Color c = hitPointRenderers[i].color;
+            
+            // 透過索引反推方向與顏色 (巧妙的數學：0~7 對應 dir 與 lane)
+            int dir = i / 2;  // 0:上, 1:下, 2:左, 3:右
+            int lane = i % 2; // 0:紅(J), 1:藍(K)
+
+            // 如果搖桿方向對了，而且對應的按鍵正在被按住，就亮起！
+            if (dir == currentDir)
+            {
+                if (lane == 0 && isJPressed) c.a = activeAlpha;
+                else if (lane == 1 && isKPressed) c.a = activeAlpha;
+                else c.a = defaultAlpha;
+            }
+            else
+            {
+                // 方向不對，或者沒按按鍵，就維持半透明
+                c.a = defaultAlpha;
+            }
+
+            hitPointRenderers[i].color = c;
+        }
+    }
+
     // 🌟 處理文字淡出效果
     void FadeOutJudgementTexts()
     {
@@ -121,41 +170,42 @@ public class HitManager : MonoBehaviour
 
     // 🌟 增加 Combo
     // 🌟 升級版：會根據 Combo 數量變色的 AddCombo
+    // 🌟 升級版：使用 Inspector 變數來控制 Combo 外觀
     void AddCombo()
     {
         currentCombo++;
         
         if (comboText != null) 
         {
-            comboText.text = "Combo " + currentCombo;
+            comboText.text = $"Combo {currentCombo}";
 
-            // === 讓 Combo 數字根據連擊數改變顏色 ===
+            // 根據連擊數套用對應的顏色與大小
             if (currentCombo >= 100)
             {
-                // 100 連擊以上：變成傳說的金色
-                comboText.color = new Color(1f, 0.8f, 0f, 1f); 
+                comboText.color = combo100Color; 
+                comboText.fontSize = combo100Size; 
             }
             else if (currentCombo >= 50)
             {
-                // 50 連擊以上：變成亮藍色或粉色
-                comboText.color = new Color(0f, 0.8f, 1f, 1f); 
+                comboText.color = combo50Color; 
+                comboText.fontSize = combo50Size;
             }
             else
             {
-                // 50 連擊以下：維持純白色
-                comboText.color = Color.white; 
+                comboText.color = comboNormalColor; 
+                comboText.fontSize = comboNormalSize; 
             }
         }
     }
 
-    // 🌟 別忘了在斷 Combo 的時候把它變回預設狀態
     void ResetCombo()
     {
         currentCombo = 0;
         if (comboText != null) 
         {
-            comboText.text = ""; 
-            comboText.color = Color.white; // 恢復成純白
+            comboText.text = ""; // 斷 Combo 時隱藏文字
+            comboText.color = comboNormalColor; // 恢復成預設顏色
+            comboText.fontSize = comboNormalSize; // 恢復預設大小
         }
     }
 
